@@ -33,4 +33,29 @@
                       rpy="$(arg rpy)">
   </xacro:franka_robot>
 
+  <link name="camera_mount_base"></link>
+  <link name="camera_mount_offset"></link>
+  <link name="camera_mount_rotation"></link>
+
+  <joint name="camera_mount_base_joint" type="fixed">
+   <parent link="panda_hand_tcp"/>
+   <child link="camera_mount_base"/>
+   <origin rpy="0 0 0"/>
+  </joint>
+  <joint name="camera_mount_offset_joint" type="fixed">
+   <parent link="camera_mount_base"/>
+   <child link="camera_mount_offset"/>
+   <origin xyz=".07 0 .002"/>
+  </joint>
+  <joint name="camera_mount_rotation_joint" type="fixed">
+   <parent link="camera_mount_offset"/>
+   <child link="camera_mount_rotation"/>
+   <origin rpy="0 -0.175 0"/>
+  </joint>
+
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435.urdf.xacro" />
+  <xacro:sensor_d435 parent="camera_mount_rotation">
+    <origin xyz="-0.0045 -0.0176 0.01154"  rpy="0 -1.571 3.1415" /> 
+  </xacro:sensor_d435>
+
 </robot>
