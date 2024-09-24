@@ -79,6 +79,19 @@
           <robotSimType>franka_gazebo/FrankaHWSim</robotSimType>
         </plugin>
         <self_collide>true</self_collide>
+
+        <!-- ADDED GRIPPER -->
+        <gripper name="test_gripper">
+          <palm_link>${arm_id}_hand</palm_link>
+          <gripper_link>${arm_id}_leftfinger</gripper_link>
+          <gripper_link>${arm_id}_rightfinger</gripper_link>
+          <grasp_check>
+            <detach_steps>10</detach_steps>
+            <attach_steps>10</attach_steps>
+            <min_cintact_count>4</min_cintact_count>
+          </grasp_check>
+        </gripper>
+        <!-- END ADDED GRIPPER -->
       </gazebo>
     </xacro:if>
   </xacro:macro>

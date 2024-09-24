@@ -38,7 +38,7 @@
   <link name="camera_mount_rotation"></link>
 
   <joint name="camera_mount_base_joint" type="fixed">
-   <parent link="panda_hand_tcp"/>
+   <parent link="panda_hand_sc"/>
    <child link="camera_mount_base"/>
    <origin rpy="0 0 0"/>
   </joint>

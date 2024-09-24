@@ -40,6 +40,10 @@
     <arg name="paused" value="true"/>
     <arg name="gui" value="$(eval not arg('headless'))"/>
     <arg name="use_sim_time" value="true"/>
+
+    <!-- ADDED -->
+    <arg name="verbose" value="true" />
+
   </include>
 
   <param name="robot_description"
