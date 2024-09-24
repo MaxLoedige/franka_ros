@@ -81,17 +81,23 @@
         <self_collide>true</self_collide>
 
         <!-- ADDED GRIPPER -->
-        <gripper name="test_gripper">
-          <palm_link>${arm_id}_hand</palm_link>
-          <gripper_link>${arm_id}_leftfinger</gripper_link>
-          <gripper_link>${arm_id}_rightfinger</gripper_link>
-          <grasp_check>
-            <detach_steps>10</detach_steps>
-            <attach_steps>10</attach_steps>
-            <min_cintact_count>4</min_cintact_count>
-          </grasp_check>
-        </gripper>
+        <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+            <arm>
+              <arm_name>panda_gripper</arm_name>
+              <palm_link>${arm_id}_link7</palm_link>
+              <gripper_link>${arm_id}_leftfinger</gripper_link>
+              <gripper_link>${arm_id}_rightfinger</gripper_link>
+            </arm>
+            <update_rate>10</update_rate>
+            <forces_angle_tolerance>100</forces_angle_tolerance>
+            <grip_count_threshold>4</grip_count_threshold>
+            <max_grip_count>8</max_grip_count>
+            <release_tolerance>0.005</release_tolerance>
+            <disable_collisions_on_attach>false</disable_collisions_on_attach>
+            <contact_topic>__default_topic__</contact_topic>
+          </plugin>
         <!-- END ADDED GRIPPER -->
+        
       </gazebo>
     </xacro:if>
   </xacro:macro>
